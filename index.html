@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taomly — White Label Restaurant SaaS Platform</title>
+  <meta name="description" content="Launch your branded restaurant ordering platform in days, not months. Multi-tenant SaaS with Telegram Mini App, PWA, analytics and billing — ready for white label." />
+  <meta name="keywords" content="white label restaurant software, telegram mini app ordering, restaurant SaaS platform, multi-tenant restaurant system, food ordering platform" />
+  <meta name="author" content="Taomly" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://taomly.uz/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://taomly.uz/" />
+  <meta property="og:title" content="Taomly — White Label Restaurant SaaS Platform" />
+  <meta property="og:description" content="Launch your branded restaurant ordering platform in days, not months." />
+  <meta property="og:image" content="https://taomly.uz/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Taomly — White Label Restaurant SaaS Platform" />
+  <meta name="twitter:description" content="Launch your branded restaurant ordering platform in days, not months." />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234F6EF7'/><text x='16' y='22' text-anchor='middle' font-size='18' fill='white' font-family='sans-serif' font-weight='bold'>T</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0A0A0F;
+      --surface: #111118;
+      --elevated: #1C1C28;
+      --border: #1E1E2E;
+      --text: #E8E8F0;
+      --muted: #6B6B80;
+      --accent: #4F6EF7;
+      --accent-dim: rgba(79, 110, 247, 0.12);
+      --accent-glow: rgba(79, 110, 247, 0.25);
+      --green: #34D399;
+      --radius: 12px;
+      --max: 1200px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(10, 10, 15, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 24px;
+      height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 20px; font-weight: 800;
+      letter-spacing: -0.5px;
+      color: var(--text);
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex; align-items: center; gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 14px; font-weight: 500;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .lang-btn {
+      background: var(--elevated); border: 1px solid var(--border);
+      color: var(--muted); font-family: 'Inter', sans-serif;
+      font-size: 13px; font-weight: 500;
+      padding: 6px 14px; border-radius: 6px;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .lang-btn:hover { color: var(--text); border-color: var(--accent); }
+    .btn-nav {
+      background: var(--accent); color: #fff;
+      font-size: 14px; font-weight: 600;
+      padding: 8px 20px; border-radius: 8px;
+      border: none; cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .btn-nav:hover { opacity: 0.85; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 160px 0 120px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+      width: 800px; height: 600px;
+      background: radial-gradient(ellipse at center, rgba(79,110,247,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent-dim); border: 1px solid rgba(79,110,247,0.3);
+      color: #8BA4FA; font-size: 13px; font-weight: 500;
+      padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 32px;
+    }
+    .hero-badge::before { content: '●'; font-size: 8px; color: var(--green); }
+    h1 {
+      font-size: clamp(40px, 6vw, 76px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 24px;
+    }
+    h1 em { font-style: normal; color: var(--accent); }
+    .hero-sub {
+      font-size: clamp(17px, 2vw, 20px);
+      color: var(--muted); max-width: 600px;
+      margin: 0 auto 48px;
+      line-height: 1.65;
+    }
+    .hero-cta { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 80px; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--accent); color: #fff;
+      font-size: 16px; font-weight: 600;
+      padding: 14px 28px; border-radius: 10px;
+      border: none; cursor: pointer;
+      transition: all 0.2s;
+      box-shadow: 0 0 0 0 var(--accent-glow);
+    }
+    .btn-primary:hover { opacity: 0.88; box-shadow: 0 8px 32px var(--accent-glow); transform: translateY(-1px); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: transparent; color: var(--text);
+      font-size: 16px; font-weight: 500;
+      padding: 14px 28px; border-radius: 10px;
+      border: 1px solid var(--border); cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* ── METRICS ── */
+    .metrics {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; max-width: 900px; margin: 0 auto;
+    }
+    .metric {
+      background: var(--surface);
+      padding: 32px 24px; text-align: center;
+    }
+    .metric-num {
+      font-size: 40px; font-weight: 800;
+      letter-spacing: -1.5px; color: var(--text);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .metric-num span { color: var(--accent); }
+    .metric-label { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 100px 0; }
+    .section-label {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 16px;
+    }
+    h2 {
+      font-size: clamp(28px, 4vw, 48px);
+      font-weight: 800; letter-spacing: -1.5px;
+      line-height: 1.1; margin-bottom: 20px;
+    }
+    .section-sub {
+      font-size: 18px; color: var(--muted);
+      max-width: 560px; line-height: 1.65;
+    }
+    .section-header { margin-bottom: 64px; }
+
+    /* ── FEATURES GRID ── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .feature-card {
+      background: var(--surface);
+      padding: 40px 32px;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .feature-card:hover { background: var(--elevated); }
+    .feature-icon {
+      width: 44px; height: 44px;
+      background: var(--accent-dim); border: 1px solid rgba(79,110,247,0.2);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 24px;
+    }
+    .feature-title {
+      font-size: 17px; font-weight: 700;
+      letter-spacing: -0.3px; margin-bottom: 10px;
+    }
+    .feature-desc { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+    /* ── WHITE LABEL SECTION ── */
+    .wl-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+      align-items: center;
+    }
+    .wl-list { list-style: none; margin-top: 32px; }
+    .wl-list li {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+      font-size: 15px; color: var(--muted);
+    }
+    .wl-list li:last-child { border-bottom: none; }
+    .wl-list li::before {
+      content: '✓';
+      color: var(--green); font-weight: 700; font-size: 14px;
+      margin-top: 2px; flex-shrink: 0;
+    }
+    .wl-visual {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px;
+      position: relative;
+    }
+    .wl-browser-bar {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 24px;
+    }
+    .wl-dot { width: 10px; height: 10px; border-radius: 50%; }
+    .wl-url {
+      flex: 1; background: var(--elevated); border-radius: 6px;
+      padding: 6px 12px; font-size: 12px; color: var(--muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .wl-preview {
+      background: var(--bg); border-radius: 8px;
+      padding: 20px; border: 1px solid var(--border);
+    }
+    .wl-restaurant-name {
+      font-size: 20px; font-weight: 700; margin-bottom: 4px;
+    }
+    .wl-restaurant-sub { font-size: 13px; color: var(--muted); margin-bottom: 20px; }
+    .wl-menu-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0; border-bottom: 1px solid var(--border);
+      font-size: 14px;
+    }
+    .wl-menu-item:last-child { border-bottom: none; }
+    .wl-price { font-weight: 700; }
+    .wl-badge {
+      font-size: 11px; font-weight: 600; padding: 2px 8px;
+      border-radius: 4px; margin-left: 8px;
+    }
+
+    /* ── TECH STACK ── */
+    .tech-grid {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-top: 48px;
+    }
+    .tech-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 8px 16px; border-radius: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px; color: var(--muted);
+      transition: all 0.2s;
+    }
+    .tech-badge:hover { border-color: var(--accent); color: var(--text); }
+    .tech-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+    /* ── ANALYTICS SECTION ── */
+    .analytics-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px;
+      align-items: center;
+    }
+    .analytics-visual {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+    }
+    .analytics-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 24px;
+    }
+    .analytics-title { font-size: 15px; font-weight: 600; }
+    .analytics-period {
+      font-size: 12px; color: var(--muted);
+      background: var(--elevated); padding: 4px 10px; border-radius: 6px;
+    }
+    .kpi-row {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+      margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--bg); border-radius: 8px; border: 1px solid var(--border);
+      padding: 16px;
+    }
+    .kpi-val { font-size: 22px; font-weight: 800; letter-spacing: -0.5px; }
+    .kpi-lbl { font-size: 11px; color: var(--muted); margin-top: 4px; }
+    .kpi-delta { font-size: 11px; color: var(--green); margin-top: 2px; }
+    .bar-chart { display: flex; align-items: flex-end; gap: 6px; height: 80px; }
+    .bar {
+      flex: 1; border-radius: 4px 4px 0 0;
+      background: var(--accent-dim); border: 1px solid rgba(79,110,247,0.2);
+      transition: background 0.2s; min-width: 0;
+    }
+    .bar.active { background: var(--accent); border-color: var(--accent); }
+    .bar:hover { background: var(--accent); }
+
+    /* ── PRICING ── */
+    .pricing-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .pricing-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 36px 32px;
+      transition: border-color 0.2s;
+      position: relative;
+    }
+    .pricing-card:hover { border-color: var(--accent); }
+    .pricing-card.featured {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, rgba(79,110,247,0.08) 0%, var(--surface) 100%);
+    }
+    .popular-badge {
+      position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+      background: var(--accent); color: #fff;
+      font-size: 11px; font-weight: 700; letter-spacing: 1px;
+      padding: 4px 14px; border-radius: 100px; white-space: nowrap;
+    }
+    .plan-name { font-size: 13px; font-weight: 600; color: var(--muted); margin-bottom: 16px; text-transform: uppercase; letter-spacing: 1px; }
+    .plan-price {
+      font-size: 48px; font-weight: 800; letter-spacing: -2px;
+      line-height: 1; margin-bottom: 8px;
+    }
+    .plan-price sup { font-size: 20px; font-weight: 600; vertical-align: top; margin-top: 8px; }
+    .plan-period { font-size: 14px; color: var(--muted); margin-bottom: 32px; }
+    .plan-features { list-style: none; margin-bottom: 36px; }
+    .plan-features li {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; color: var(--muted); padding: 8px 0;
+    }
+    .plan-features li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+    .plan-features li.off { opacity: 0.4; }
+    .plan-features li.off::before { content: '–'; color: var(--muted); }
+    .btn-plan {
+      width: 100%; padding: 12px; border-radius: 8px;
+      font-size: 15px; font-weight: 600; cursor: pointer;
+      transition: all 0.2s; border: 1px solid var(--border);
+      background: transparent; color: var(--text);
+    }
+    .btn-plan:hover { border-color: var(--accent); color: var(--accent); }
+    .btn-plan.featured { background: var(--accent); color: #fff; border-color: var(--accent); }
+    .btn-plan.featured:hover { opacity: 0.85; }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      cursor: pointer; gap: 24px;
+    }
+    .faq-q-text { font-size: 16px; font-weight: 600; line-height: 1.4; }
+    .faq-icon {
+      flex-shrink: 0; width: 28px; height: 28px;
+      background: var(--elevated); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--muted); transition: all 0.25s;
+    }
+    .faq-item.open .faq-icon { background: var(--accent-dim); color: var(--accent); transform: rotate(45deg); }
+    .faq-a {
+      font-size: 15px; color: var(--muted); line-height: 1.7;
+      max-height: 0; overflow: hidden; transition: max-height 0.35s ease, padding 0.3s;
+    }
+    .faq-item.open .faq-a { max-height: 300px; padding-top: 16px; }
+
+    /* ── CONTACT ── */
+    .contact-section { text-align: center; }
+    .contact-box {
+      max-width: 640px; margin: 0 auto;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 64px 48px;
+    }
+    .contact-box h2 { margin-bottom: 16px; }
+    .contact-box p { color: var(--muted); margin-bottom: 40px; font-size: 17px; }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; text-align: left; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    label { font-size: 13px; font-weight: 600; color: var(--muted); }
+    input, textarea, select {
+      background: var(--bg); border: 1px solid var(--border);
+      color: var(--text); font-family: 'Inter', sans-serif;
+      font-size: 15px; padding: 12px 16px; border-radius: 8px;
+      transition: border-color 0.2s; outline: none; width: 100%;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 120px; }
+    .btn-submit {
+      width: 100%; padding: 14px; background: var(--accent); color: #fff;
+      font-size: 16px; font-weight: 600; border: none; border-radius: 10px;
+      cursor: pointer; transition: opacity 0.2s; margin-top: 8px;
+    }
+    .btn-submit:hover { opacity: 0.85; }
+    .form-success {
+      display: none; text-align: center; padding: 24px;
+      color: var(--green); font-weight: 600; font-size: 16px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 48px 0;
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-left { font-size: 14px; color: var(--muted); }
+    .footer-left strong { color: var(--text); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { font-size: 14px; color: var(--muted); transition: color 0.2s; }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none; position: fixed; top: 64px; left: 0; right: 0; bottom: 0;
+      background: var(--bg); z-index: 99; padding: 32px 24px;
+      flex-direction: column; gap: 8px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 20px; font-weight: 600; color: var(--muted);
+      padding: 14px 0; border-bottom: 1px solid var(--border);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--text); }
+    .mobile-cta { margin-top: 24px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+      .wl-grid, .analytics-grid { grid-template-columns: 1fr; gap: 48px; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .kpi-row { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .features-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero { padding: 120px 0 80px; }
+      section { padding: 72px 0; }
+      .contact-box { padding: 40px 24px; }
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .hero-cta { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { animation: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#">Taom<span>ly</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#features" data-i18n="nav.features">Features</a></li>
+      <li><a href="#whitelabel" data-i18n="nav.whitelabel">White Label</a></li>
+      <li><a href="#analytics" data-i18n="nav.analytics">Analytics</a></li>
+      <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="lang-btn" id="langBtn" onclick="toggleLang()">RU</button>
+      <a href="#contact"><button class="btn-nav" data-i18n="nav.cta">Request Demo</button></a>
+      <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#features" onclick="toggleMenu()" data-i18n="nav.features">Features</a>
+  <a href="#whitelabel" onclick="toggleMenu()" data-i18n="nav.whitelabel">White Label</a>
+  <a href="#analytics" onclick="toggleMenu()" data-i18n="nav.analytics">Analytics</a>
+  <a href="#pricing" onclick="toggleMenu()" data-i18n="nav.pricing">Pricing</a>
+  <a href="#faq" onclick="toggleMenu()" data-i18n="nav.faq">FAQ</a>
+  <a href="#contact" onclick="toggleMenu()" data-i18n="nav.contact">Contact</a>
+  <div class="mobile-cta"><a href="#contact"><button class="btn-primary" style="width:100%;justify-content:center" data-i18n="nav.cta">Request Demo</button></a></div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge reveal" data-i18n="hero.badge">Multi-tenant · White Label · Production Ready</div>
+    <h1 class="reveal">
+      <span data-i18n="hero.h1a">Launch your branded</span><br>
+      <em data-i18n="hero.h1b">restaurant platform</em><br>
+      <span data-i18n="hero.h1c">in days, not months.</span>
+    </h1>
+    <p class="hero-sub reveal" data-i18n="hero.sub">
+      A complete white label SaaS for restaurant ordering — Telegram Mini App, PWA, multi-tenant architecture, analytics and billing. Ready to deploy under your brand.
+    </p>
+    <div class="hero-cta reveal">
+      <a href="#contact"><button class="btn-primary">
+        <span data-i18n="hero.cta1">Request Demo</span>
+        <span>→</span>
+      </button></a>
+      <a href="#features"><button class="btn-secondary" data-i18n="hero.cta2">Explore Features</button></a>
+    </div>
+
+    <!-- METRICS -->
+    <div class="metrics reveal">
+      <div class="metric">
+        <div class="metric-num"><span class="count" data-target="50">0</span>+</div>
+        <div class="metric-label" data-i18n="metrics.restaurants">Restaurants</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num"><span class="count" data-target="12400">0</span></div>
+        <div class="metric-label" data-i18n="metrics.orders">Orders Processed</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num"><span class="count" data-target="99">0</span><span style="font-size:24px">%</span></div>
+        <div class="metric-label" data-i18n="metrics.uptime">Uptime</div>
+      </div>
+      <div class="metric">
+        <div class="metric-num"><span class="count" data-target="3">0</span><span style="font-size:24px">s</span></div>
+        <div class="metric-label" data-i18n="metrics.deploy">Deploy Time</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label" data-i18n="features.label">Platform</div>
+      <h2 data-i18n="features.h2">Everything your clients need.<br>Nothing they don't.</h2>
+      <p class="section-sub" data-i18n="features.sub">Built for agencies and integrators who want to deliver a complete restaurant solution under their own brand.</p>
+    </div>
+    <div class="features-grid reveal">
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title" data-i18n="f1.t">Telegram Mini App</div>
+        <div class="feature-desc" data-i18n="f1.d">Native ordering experience inside Telegram. Each restaurant gets its own dedicated bot with full menu, cart, and order tracking.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏷️</div>
+        <div class="feature-title" data-i18n="f2.t">White Label Branding</div>
+        <div class="feature-desc" data-i18n="f2.d">Per-restaurant logos, colors, and domain. Dynamic PWA manifests generate unique branded apps for every client automatically.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title" data-i18n="f3.t">Progressive Web App</div>
+        <div class="feature-desc" data-i18n="f3.d">Installable on iOS and Android with offline support, push-ready service workers and per-restaurant web app manifests.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏢</div>
+        <div class="feature-title" data-i18n="f4.t">Multi-Tenant Architecture</div>
+        <div class="feature-desc" data-i18n="f4.d">Agency → Restaurant → Customer three-tier model. Complete data isolation between tenants with JWT + Fernet encryption.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📦</div>
+        <div class="feature-title" data-i18n="f5.t">QR Menu & Table Orders</div>
+        <div class="feature-desc" data-i18n="f5.d">Unique QR codes per table, per restaurant. Guests scan and order instantly — no app install required. Built-in QR generator.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚀</div>
+        <div class="feature-title" data-i18n="f6.t">Delivery · Takeaway · Dine-in</div>
+        <div class="feature-desc" data-i18n="f6.d">All three order modes in one platform. Restaurants configure which modes are active. Full order lifecycle with real-time status updates.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔔</div>
+        <div class="feature-title" data-i18n="f7.t">Instant Notifications</div>
+        <div class="feature-desc" data-i18n="f7.d">Telegram notifications for every order event — placed, confirmed, preparing, ready, delivered. Dispatched via async background tasks.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <div class="feature-title" data-i18n="f8.t">Enterprise Security</div>
+        <div class="feature-desc" data-i18n="f8.d">HMAC-SHA256 webhook verification, IDOR protection, rate limiting, JWT with role-based access. Full audit trail.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🐳</div>
+        <div class="feature-title" data-i18n="f9.t">Docker Ready</div>
+        <div class="feature-desc" data-i18n="f9.d">Docker + docker-compose included. Deploy on any cloud — Render, Railway, DigitalOcean, AWS, GCP. CI/CD via GitHub Actions.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHITE LABEL -->
+<section id="whitelabel" style="background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+  <div class="container">
+    <div class="wl-grid">
+      <div class="reveal">
+        <div class="section-label" data-i18n="wl.label">White Label</div>
+        <h2 data-i18n="wl.h2">Your brand.<br>Our engine.</h2>
+        <p class="section-sub" data-i18n="wl.sub">Sell the platform as your own product. Every restaurant gets a fully branded experience — from the Telegram bot name to the PWA icon.</p>
+        <ul class="wl-list">
+          <li data-i18n="wl.l1">Custom domain per restaurant (e.g. menu.yourrestaurant.com)</li>
+          <li data-i18n="wl.l2">Per-restaurant Telegram bot with unique name and avatar</li>
+          <li data-i18n="wl.l3">Dynamic brand colors applied across the entire UI</li>
+          <li data-i18n="wl.l4">Custom logo, welcome screen and restaurant slug</li>
+          <li data-i18n="wl.l5">Agency admin panel to manage all clients in one place</li>
+          <li data-i18n="wl.l6">Restaurants onboard and manage menus independently</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="wl-visual">
+          <div class="wl-browser-bar">
+            <div class="wl-dot" style="background:#FF5F56"></div>
+            <div class="wl-dot" style="background:#FFBD2E"></div>
+            <div class="wl-dot" style="background:#27C93F"></div>
+            <div class="wl-url">menu.chinar-restaurant.uz</div>
+          </div>
+          <div class="wl-preview">
+            <div class="wl-restaurant-name" style="color: #7C5C3E" id="wl-name">🌿 Chinar Restaurant</div>
+            <div class="wl-restaurant-sub" data-i18n="wl.demo.sub">Tashkent · Open now</div>
+            <div class="wl-menu-item">
+              <div>
+                <span data-i18n="wl.dish1">Plov (Uzbek Rice)</span>
+                <span class="wl-badge" style="background:rgba(79,110,247,0.15); color: #8BA4FA" data-i18n="wl.badge.popular">Popular</span>
+              </div>
+              <span class="wl-price">45,000</span>
+            </div>
+            <div class="wl-menu-item">
+              <div>
+                <span data-i18n="wl.dish2">Shashlik (Lamb)</span>
+                <span class="wl-badge" style="background:rgba(52,211,153,0.15); color: #34D399" data-i18n="wl.badge.new">New</span>
+              </div>
+              <span class="wl-price">38,000</span>
+            </div>
+            <div class="wl-menu-item">
+              <div><span data-i18n="wl.dish3">Samsa (3 pcs)</span></div>
+              <span class="wl-price">18,000</span>
+            </div>
+          </div>
+          <div style="margin-top:20px;display:flex;gap:10px">
+            <div style="flex:1;background:var(--accent);color:#fff;text-align:center;padding:10px;border-radius:8px;font-weight:600;font-size:14px" data-i18n="wl.btn.order">Order Now</div>
+            <div style="background:var(--elevated);color:var(--muted);text-align:center;padding:10px;border-radius:8px;font-size:14px;width:44px">📞</div>
+          </div>
+        </div>
+        <div style="margin-top:12px; text-align:center">
+          <button onclick="switchDemo()" style="background:none;border:none;color:var(--muted);font-size:13px;cursor:pointer;text-decoration:underline" data-i18n="wl.switch">Switch restaurant →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH STACK -->
+<section>
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center; margin-bottom:0">
+      <div class="section-label" data-i18n="tech.label">Stack</div>
+      <h2 data-i18n="tech.h2">Built on proven,<br>modern technology.</h2>
+      <p class="section-sub" style="margin: 0 auto" data-i18n="tech.sub">Every component chosen for reliability and scalability. No experimental dependencies.</p>
+    </div>
+    <div class="tech-grid reveal" style="justify-content:center">
+      <div class="tech-badge"><div class="dot"></div>FastAPI</div>
+      <div class="tech-badge"><div class="dot"></div>PostgreSQL</div>
+      <div class="tech-badge"><div class="dot"></div>SQLAlchemy</div>
+      <div class="tech-badge"><div class="dot"></div>Telegram Mini App</div>
+      <div class="tech-badge"><div class="dot"></div>JWT + Fernet</div>
+      <div class="tech-badge"><div class="dot"></div>PWA / Service Worker</div>
+      <div class="tech-badge"><div class="dot"></div>Docker</div>
+      <div class="tech-badge"><div class="dot"></div>Alembic</div>
+      <div class="tech-badge"><div class="dot"></div>Sentry</div>
+      <div class="tech-badge"><div class="dot"></div>GitHub Actions CI/CD</div>
+      <div class="tech-badge"><div class="dot"></div>slowapi Rate Limiting</div>
+      <div class="tech-badge"><div class="dot"></div>HMAC-SHA256</div>
+    </div>
+  </div>
+</section>
+
+<!-- ANALYTICS -->
+<section id="analytics" style="background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="analytics-grid">
+      <div class="reveal">
+        <div class="section-label" data-i18n="analytics.label">Analytics</div>
+        <h2 data-i18n="analytics.h2">Data your clients<br>will actually use.</h2>
+        <p class="section-sub" data-i18n="analytics.sub">Built-in analytics dashboard with KPI cards, revenue charts, top dishes, peak hours and order type breakdown — all filterable by period.</p>
+        <ul class="wl-list" style="margin-top:24px">
+          <li data-i18n="an.l1">Revenue by day with trend indicators</li>
+          <li data-i18n="an.l2">Top-performing dishes ranked by orders</li>
+          <li data-i18n="an.l3">Peak hours heatmap for staffing decisions</li>
+          <li data-i18n="an.l4">Order type split: delivery / takeaway / dine-in</li>
+          <li data-i18n="an.l5">Period filters: today, 7d, 30d, 90d, this month</li>
+        </ul>
+      </div>
+      <div class="reveal">
+        <div class="analytics-visual">
+          <div class="analytics-header">
+            <div class="analytics-title" data-i18n="an.dash">Revenue Overview</div>
+            <div class="analytics-period">Last 30 days</div>
+          </div>
+          <div class="kpi-row">
+            <div class="kpi-card">
+              <div class="kpi-val">$4,820</div>
+              <div class="kpi-lbl" data-i18n="an.revenue">Revenue</div>
+              <div class="kpi-delta">↑ 18%</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-val">347</div>
+              <div class="kpi-lbl" data-i18n="an.orders">Orders</div>
+              <div class="kpi-delta">↑ 12%</div>
+            </div>
+            <div class="kpi-card">
+              <div class="kpi-val">$13.9</div>
+              <div class="kpi-lbl" data-i18n="an.avg">Avg Check</div>
+              <div class="kpi-delta">↑ 5%</div>
+            </div>
+          </div>
+          <div class="bar-chart" id="barChart">
+            <div class="bar" style="height:40%"></div>
+            <div class="bar" style="height:55%"></div>
+            <div class="bar" style="height:35%"></div>
+            <div class="bar" style="height:70%"></div>
+            <div class="bar" style="height:50%"></div>
+            <div class="bar" style="height:80%"></div>
+            <div class="bar active" style="height:95%"></div>
+            <div class="bar" style="height:65%"></div>
+            <div class="bar" style="height:75%"></div>
+            <div class="bar" style="height:60%"></div>
+            <div class="bar" style="height:85%"></div>
+            <div class="bar" style="height:100%"></div>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-top:8px">
+            <span style="font-size:11px;color:var(--muted)">Jun 9</span>
+            <span style="font-size:11px;color:var(--muted)">Jun 30</span>
+            <span style="font-size:11px;color:var(--muted)">Jul 9</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BILLING -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center">
+      <div class="section-label" data-i18n="billing.label">Pricing</div>
+      <h2 data-i18n="billing.h2">Simple, predictable pricing.<br>No commissions.</h2>
+      <p class="section-sub" style="margin:0 auto" data-i18n="billing.sub">Fixed monthly subscription replaces the 25–30% commission taken by food aggregators. Your clients keep their revenue.</p>
+    </div>
+    <div class="pricing-grid reveal">
+      <div class="pricing-card">
+        <div class="plan-name" data-i18n="plan.free">Free</div>
+        <div class="plan-price"><sup>$</sup>0</div>
+        <div class="plan-period" data-i18n="plan.free.period">forever</div>
+        <ul class="plan-features">
+          <li data-i18n="pf1.1">1 restaurant</li>
+          <li data-i18n="pf1.2">Up to 50 orders/month</li>
+          <li data-i18n="pf1.3">Basic menu management</li>
+          <li data-i18n="pf1.4">Telegram bot</li>
+          <li class="off" data-i18n="pf1.5">Analytics dashboard</li>
+          <li class="off" data-i18n="pf1.6">White label branding</li>
+          <li class="off" data-i18n="pf1.7">Priority support</li>
+        </ul>
+        <button class="btn-plan" data-i18n="plan.start">Get started</button>
+      </div>
+      <div class="pricing-card featured">
+        <div class="popular-badge" data-i18n="plan.popular">Most Popular</div>
+        <div class="plan-name" data-i18n="plan.basic">Basic</div>
+        <div class="plan-price"><sup>$</sup>29</div>
+        <div class="plan-period" data-i18n="plan.month">per month</div>
+        <ul class="plan-features">
+          <li data-i18n="pf2.1">Up to 5 restaurants</li>
+          <li data-i18n="pf2.2">Unlimited orders</li>
+          <li data-i18n="pf2.3">Full menu management</li>
+          <li data-i18n="pf2.4">Telegram bot per restaurant</li>
+          <li data-i18n="pf2.5">Analytics dashboard</li>
+          <li data-i18n="pf2.6">QR code management</li>
+          <li class="off" data-i18n="pf2.7">White label branding</li>
+        </ul>
+        <button class="btn-plan featured" data-i18n="plan.choose">Choose Basic</button>
+      </div>
+      <div class="pricing-card">
+        <div class="plan-name" data-i18n="plan.pro">Pro</div>
+        <div class="plan-price"><sup>$</sup>79</div>
+        <div class="plan-period" data-i18n="plan.month">per month</div>
+        <ul class="plan-features">
+          <li data-i18n="pf3.1">Unlimited restaurants</li>
+          <li data-i18n="pf3.2">Unlimited orders</li>
+          <li data-i18n="pf3.3">Full white label branding</li>
+          <li data-i18n="pf3.4">Custom domains</li>
+          <li data-i18n="pf3.5">Advanced analytics</li>
+          <li data-i18n="pf3.6">Priority support</li>
+          <li data-i18n="pf3.7">PDF invoices</li>
+        </ul>
+        <button class="btn-plan" data-i18n="plan.choose.pro">Choose Pro</button>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px">
+      <p style="font-size:14px;color:var(--muted)" data-i18n="billing.note">Acquiring the platform? <a href="#contact" style="color:var(--accent)">Contact us</a> for asset sale pricing and source code licensing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background: var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="section-header reveal" style="text-align:center">
+      <div class="section-label">FAQ</div>
+      <h2 data-i18n="faq.h2">Common questions.</h2>
+    </div>
+    <div class="faq-list reveal">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-i18n="faq.q1">What does "white label" mean exactly?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a" data-i18n="faq.a1">You (or your client) gets the platform running under a completely custom brand. The Telegram bot has a custom name, the web app shows the restaurant's logo and colors, and the URL is a custom domain. End customers never see "Taomly" — they see the restaurant's brand.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-i18n="faq.q2">How long does it take to deploy a new restaurant?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a" data-i18n="faq.a2">Once the platform is deployed, adding a new restaurant takes 2–3 minutes in the agency admin panel: enter the restaurant name, slug, Telegram bot token, and brand colors. The system auto-generates webhooks, PWA manifest, and QR codes. No developer involvement needed.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-i18n="faq.q3">Does each restaurant need a separate Telegram bot?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a" data-i18n="faq.a3">Yes — each restaurant gets its own dedicated Telegram bot (@YourRestaurant_bot). This is what enables full white labeling. Creating a bot via @BotFather takes 30 seconds, and the platform handles all webhook configuration automatically.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-i18n="faq.q4">Can I buy the source code and host it myself?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a" data-i18n="faq.a4">Yes. The platform is available as an asset sale — full source code, documentation, deployment guides, test suite and architecture docs. Deploy on any cloud provider that supports Python/Docker. Contact us to discuss licensing terms.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text" data-i18n="faq.q5">What database and infrastructure does it use?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-a" data-i18n="faq.a5">PostgreSQL (tested on Neon, works on any Postgres). Backend is FastAPI + SQLAlchemy. Deployable via Docker on Render, Railway, DigitalOcean, AWS, GCP. Includes docker-compose.yml, Dockerfile, Alembic migrations and GitHub Actions CI/CD pipeline.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="container">
+    <div class="contact-box reveal">
+      <h2 data-i18n="contact.h2">Ready to launch?</h2>
+      <p data-i18n="contact.sub">Whether you're acquiring the platform or launching for your clients — get in touch and we'll respond within 24 hours.</p>
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-i18n="form.name">Full Name</label>
+            <input type="text" id="fname" placeholder="John Smith" />
+          </div>
+          <div class="form-group">
+            <label data-i18n="form.company">Company</label>
+            <input type="text" id="fcompany" placeholder="Acme Agency" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form.email">Email</label>
+          <input type="email" id="femail" placeholder="john@example.com" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="form.interest">I'm interested in</label>
+          <select id="finterest">
+            <option data-i18n="form.opt1">Acquiring the platform (asset sale)</option>
+            <option data-i18n="form.opt2">White label for my agency</option>
+            <option data-i18n="form.opt3">SaaS subscription for my restaurant</option>
+            <option data-i18n="form.opt4">Custom development / integration</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form.message">Message</label>
+          <textarea id="fmessage" placeholder="Tell us about your project..."></textarea>
+        </div>
+        <button class="btn-submit" onclick="submitForm()" data-i18n="form.submit">Send Message →</button>
+        <div class="form-success" id="formSuccess" data-i18n="form.success">✓ Message received. We'll get back to you within 24 hours.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <strong>Taomly</strong> — White Label Restaurant SaaS<br>
+        <span style="font-size:12px" data-i18n="footer.copy">© 2026 Taomly. Built with FastAPI & Telegram Mini App.</span>
+      </div>
+      <div class="footer-links">
+        <a href="https://taomly.onrender.com/docs" target="_blank">API Docs</a>
+        <a href="#contact" data-i18n="footer.contact">Contact</a>
+        <a href="#pricing" data-i18n="footer.pricing">Pricing</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const LANG = {
+  en: {
+    'nav.features': 'Features', 'nav.whitelabel': 'White Label', 'nav.analytics': 'Analytics',
+    'nav.pricing': 'Pricing', 'nav.contact': 'Contact', 'nav.cta': 'Request Demo', 'nav.faq': 'FAQ',
+    'hero.badge': 'Multi-tenant · White Label · Production Ready',
+    'hero.h1a': 'Launch your branded', 'hero.h1b': 'restaurant platform', 'hero.h1c': 'in days, not months.',
+    'hero.sub': 'A complete white label SaaS for restaurant ordering — Telegram Mini App, PWA, multi-tenant architecture, analytics and billing. Ready to deploy under your brand.',
+    'hero.cta1': 'Request Demo', 'hero.cta2': 'Explore Features',
+    'metrics.restaurants': 'Restaurants', 'metrics.orders': 'Orders Processed', 'metrics.uptime': 'Uptime', 'metrics.deploy': 'Deploy Time',
+    'features.label': 'Platform', 'features.h2': 'Everything your clients need.<br>Nothing they don\'t.',
+    'features.sub': 'Built for agencies and integrators who want to deliver a complete restaurant solution under their own brand.',
+    'f1.t': 'Telegram Mini App', 'f1.d': 'Native ordering experience inside Telegram. Each restaurant gets its own dedicated bot with full menu, cart, and order tracking.',
+    'f2.t': 'White Label Branding', 'f2.d': 'Per-restaurant logos, colors, and domain. Dynamic PWA manifests generate unique branded apps for every client automatically.',
+    'f3.t': 'Progressive Web App', 'f3.d': 'Installable on iOS and Android with offline support, push-ready service workers and per-restaurant web app manifests.',
+    'f4.t': 'Multi-Tenant Architecture', 'f4.d': 'Agency → Restaurant → Customer three-tier model. Complete data isolation between tenants with JWT + Fernet encryption.',
+    'f5.t': 'QR Menu & Table Orders', 'f5.d': 'Unique QR codes per table, per restaurant. Guests scan and order instantly — no app install required. Built-in QR generator.',
+    'f6.t': 'Delivery · Takeaway · Dine-in', 'f6.d': 'All three order modes in one platform. Restaurants configure which modes are active. Full order lifecycle with real-time status updates.',
+    'f7.t': 'Instant Notifications', 'f7.d': 'Telegram notifications for every order event — placed, confirmed, preparing, ready, delivered. Dispatched via async background tasks.',
+    'f8.t': 'Enterprise Security', 'f8.d': 'HMAC-SHA256 webhook verification, IDOR protection, rate limiting, JWT with role-based access. Full audit trail.',
+    'f9.t': 'Docker Ready', 'f9.d': 'Docker + docker-compose included. Deploy on any cloud — Render, Railway, DigitalOcean, AWS, GCP. CI/CD via GitHub Actions.',
+    'wl.label': 'White Label', 'wl.h2': 'Your brand.<br>Our engine.', 'wl.sub': 'Sell the platform as your own product. Every restaurant gets a fully branded experience — from the Telegram bot name to the PWA icon.',
+    'wl.l1': 'Custom domain per restaurant (e.g. menu.yourrestaurant.com)', 'wl.l2': 'Per-restaurant Telegram bot with unique name and avatar',
+    'wl.l3': 'Dynamic brand colors applied across the entire UI', 'wl.l4': 'Custom logo, welcome screen and restaurant slug',
+    'wl.l5': 'Agency admin panel to manage all clients in one place', 'wl.l6': 'Restaurants onboard and manage menus independently',
+    'wl.demo.sub': 'Tashkent · Open now', 'wl.dish1': 'Plov (Uzbek Rice)', 'wl.dish2': 'Shashlik (Lamb)', 'wl.dish3': 'Samsa (3 pcs)',
+    'wl.badge.popular': 'Popular', 'wl.badge.new': 'New', 'wl.btn.order': 'Order Now', 'wl.switch': 'Switch restaurant →',
+    'tech.label': 'Stack', 'tech.h2': 'Built on proven,<br>modern technology.', 'tech.sub': 'Every component chosen for reliability and scalability. No experimental dependencies.',
+    'analytics.label': 'Analytics', 'analytics.h2': 'Data your clients<br>will actually use.', 'analytics.sub': 'Built-in analytics dashboard with KPI cards, revenue charts, top dishes, peak hours and order type breakdown — all filterable by period.',
+    'an.l1': 'Revenue by day with trend indicators', 'an.l2': 'Top-performing dishes ranked by orders', 'an.l3': 'Peak hours heatmap for staffing decisions',
+    'an.l4': 'Order type split: delivery / takeaway / dine-in', 'an.l5': 'Period filters: today, 7d, 30d, 90d, this month',
+    'an.dash': 'Revenue Overview', 'an.revenue': 'Revenue', 'an.orders': 'Orders', 'an.avg': 'Avg Check',
+    'billing.label': 'Pricing', 'billing.h2': 'Simple, predictable pricing.<br>No commissions.', 'billing.sub': 'Fixed monthly subscription replaces the 25–30% commission taken by food aggregators. Your clients keep their revenue.',
+    'billing.note': 'Acquiring the platform? <a href="#contact" style="color:var(--accent)">Contact us</a> for asset sale pricing and source code licensing.',
+    'plan.free': 'Free', 'plan.basic': 'Basic', 'plan.pro': 'Pro', 'plan.popular': 'Most Popular',
+    'plan.free.period': 'forever', 'plan.month': 'per month', 'plan.start': 'Get started', 'plan.choose': 'Choose Basic', 'plan.choose.pro': 'Choose Pro',
+    'pf1.1': '1 restaurant', 'pf1.2': 'Up to 50 orders/month', 'pf1.3': 'Basic menu management', 'pf1.4': 'Telegram bot', 'pf1.5': 'Analytics dashboard', 'pf1.6': 'White label branding', 'pf1.7': 'Priority support',
+    'pf2.1': 'Up to 5 restaurants', 'pf2.2': 'Unlimited orders', 'pf2.3': 'Full menu management', 'pf2.4': 'Telegram bot per restaurant', 'pf2.5': 'Analytics dashboard', 'pf2.6': 'QR code management', 'pf2.7': 'White label branding',
+    'pf3.1': 'Unlimited restaurants', 'pf3.2': 'Unlimited orders', 'pf3.3': 'Full white label branding', 'pf3.4': 'Custom domains', 'pf3.5': 'Advanced analytics', 'pf3.6': 'Priority support', 'pf3.7': 'PDF invoices',
+    'faq.h2': 'Common questions.',
+    'faq.q1': 'What does "white label" mean exactly?', 'faq.a1': 'You (or your client) gets the platform running under a completely custom brand. The Telegram bot has a custom name, the web app shows the restaurant\'s logo and colors, and the URL is a custom domain. End customers never see "Taomly" — they see the restaurant\'s brand.',
+    'faq.q2': 'How long does it take to deploy a new restaurant?', 'faq.a2': 'Once the platform is deployed, adding a new restaurant takes 2–3 minutes in the agency admin panel: enter the restaurant name, slug, Telegram bot token, and brand colors. The system auto-generates webhooks, PWA manifest, and QR codes. No developer involvement needed.',
+    'faq.q3': 'Does each restaurant need a separate Telegram bot?', 'faq.a3': 'Yes — each restaurant gets its own dedicated Telegram bot (@YourRestaurant_bot). This is what enables full white labeling. Creating a bot via @BotFather takes 30 seconds, and the platform handles all webhook configuration automatically.',
+    'faq.q4': 'Can I buy the source code and host it myself?', 'faq.a4': 'Yes. The platform is available as an asset sale — full source code, documentation, deployment guides, test suite and architecture docs. Deploy on any cloud provider that supports Python/Docker. Contact us to discuss licensing terms.',
+    'faq.q5': 'What database and infrastructure does it use?', 'faq.a5': 'PostgreSQL (tested on Neon, works on any Postgres). Backend is FastAPI + SQLAlchemy. Deployable via Docker on Render, Railway, DigitalOcean, AWS, GCP. Includes docker-compose.yml, Dockerfile, Alembic migrations and GitHub Actions CI/CD pipeline.',
+    'contact.h2': 'Ready to launch?', 'contact.sub': 'Whether you\'re acquiring the platform or launching for your clients — get in touch and we\'ll respond within 24 hours.',
+    'form.name': 'Full Name', 'form.company': 'Company', 'form.email': 'Email', 'form.interest': 'I\'m interested in',
+    'form.opt1': 'Acquiring the platform (asset sale)', 'form.opt2': 'White label for my agency', 'form.opt3': 'SaaS subscription for my restaurant', 'form.opt4': 'Custom development / integration',
+    'form.message': 'Message', 'form.submit': 'Send Message →', 'form.success': '✓ Message received. We\'ll get back to you within 24 hours.',
+    'footer.copy': '© 2026 Taomly. Built with FastAPI & Telegram Mini App.', 'footer.contact': 'Contact', 'footer.pricing': 'Pricing',
+  },
+  ru: {
+    'nav.features': 'Возможности', 'nav.whitelabel': 'White Label', 'nav.analytics': 'Аналитика',
+    'nav.pricing': 'Цены', 'nav.contact': 'Контакт', 'nav.cta': 'Запросить демо', 'nav.faq': 'FAQ',
+    'hero.badge': 'Мультиарендность · White Label · Готово к продакшену',
+    'hero.h1a': 'Запустите брендированную', 'hero.h1b': 'платформу заказов', 'hero.h1c': 'за дни, а не месяцы.',
+    'hero.sub': 'Полноценный white label SaaS для ресторанных заказов — Telegram Mini App, PWA, мультитенантная архитектура, аналитика и биллинг. Готов к деплою под вашим брендом.',
+    'hero.cta1': 'Запросить демо', 'hero.cta2': 'Изучить возможности',
+    'metrics.restaurants': 'Ресторанов', 'metrics.orders': 'Заказов обработано', 'metrics.uptime': 'Аптайм', 'metrics.deploy': 'Время деплоя',
+    'features.label': 'Платформа', 'features.h2': 'Всё, что нужно клиентам.<br>Ничего лишнего.',
+    'features.sub': 'Создано для агентств и интеграторов, которые хотят поставлять комплексное ресторанное решение под своим брендом.',
+    'f1.t': 'Telegram Mini App', 'f1.d': 'Нативный опыт заказов внутри Telegram. Каждый ресторан получает отдельного бота с меню, корзиной и отслеживанием заказов.',
+    'f2.t': 'White Label брендинг', 'f2.d': 'Логотипы, цвета и домен для каждого ресторана. Динамические PWA-манифесты автоматически создают уникальные приложения для каждого клиента.',
+    'f3.t': 'Progressive Web App', 'f3.d': 'Устанавливается на iOS и Android с офлайн-поддержкой, сервис-воркерами и отдельными манифестами для каждого ресторана.',
+    'f4.t': 'Мультитенантная архитектура', 'f4.d': 'Трёхуровневая модель: Агентство → Ресторан → Клиент. Полная изоляция данных между арендаторами через JWT + Fernet.',
+    'f5.t': 'QR-меню и заказы за столик', 'f5.d': 'Уникальные QR-коды для каждого стола и ресторана. Гости сканируют и заказывают мгновенно — без установки приложения.',
+    'f6.t': 'Доставка · Самовывоз · За столик', 'f6.d': 'Все три режима заказов в одной платформе. Рестораны настраивают доступные режимы. Полный жизненный цикл заказа.',
+    'f7.t': 'Мгновенные уведомления', 'f7.d': 'Telegram-уведомления для каждого события заказа — создан, подтверждён, готовится, готов, доставлен. Через async-фоновые задачи.',
+    'f8.t': 'Корпоративная безопасность', 'f8.d': 'HMAC-SHA256 верификация вебхуков, защита от IDOR, rate limiting, JWT с ролевым доступом. Полный аудит-трейл.',
+    'f9.t': 'Готово для Docker', 'f9.d': 'Docker + docker-compose включены. Деплой на любое облако — Render, Railway, DigitalOcean, AWS, GCP. CI/CD через GitHub Actions.',
+    'wl.label': 'White Label', 'wl.h2': 'Ваш бренд.<br>Наш движок.', 'wl.sub': 'Продавайте платформу как собственный продукт. Каждый ресторан получает полностью брендированный опыт — от имени Telegram-бота до иконки PWA.',
+    'wl.l1': 'Кастомный домен для каждого ресторана', 'wl.l2': 'Отдельный Telegram-бот с уникальным именем и аватаром',
+    'wl.l3': 'Динамические фирменные цвета во всём интерфейсе', 'wl.l4': 'Кастомный логотип, экран приветствия и slug ресторана',
+    'wl.l5': 'Агентская админка для управления всеми клиентами', 'wl.l6': 'Рестораны самостоятельно управляют меню без участия разработчика',
+    'wl.demo.sub': 'Ташкент · Открыто', 'wl.dish1': 'Плов (узбекский)', 'wl.dish2': 'Шашлык (баранина)', 'wl.dish3': 'Самса (3 шт)',
+    'wl.badge.popular': 'Популярное', 'wl.badge.new': 'Новинка', 'wl.btn.order': 'Заказать', 'wl.switch': 'Сменить ресторан →',
+    'tech.label': 'Стек', 'tech.h2': 'Построено на проверенных<br>современных технологиях.', 'tech.sub': 'Каждый компонент выбран за надёжность и масштабируемость. Никаких экспериментальных зависимостей.',
+    'analytics.label': 'Аналитика', 'analytics.h2': 'Данные, которыми<br>клиенты реально пользуются.', 'analytics.sub': 'Встроенная аналитика с KPI-карточками, графиками выручки, топ-блюдами, пиковыми часами и разбивкой по типам заказов — с фильтрами по периоду.',
+    'an.l1': 'Выручка по дням с трендами', 'an.l2': 'Топ блюд по количеству заказов', 'an.l3': 'Тепловая карта пиковых часов',
+    'an.l4': 'Разбивка: доставка / самовывоз / за столик', 'an.l5': 'Фильтры: сегодня, 7д, 30д, 90д, этот месяц',
+    'an.dash': 'Обзор выручки', 'an.revenue': 'Выручка', 'an.orders': 'Заказы', 'an.avg': 'Средний чек',
+    'billing.label': 'Тарифы', 'billing.h2': 'Простые, предсказуемые тарифы.<br>Без комиссий.', 'billing.sub': 'Фиксированная подписка заменяет 25–30% комиссию агрегаторов. Клиенты сохраняют свою выручку.',
+    'billing.note': 'Хотите приобрести платформу? <a href="#contact" style="color:var(--accent)">Напишите нам</a> для обсуждения условий.',
+    'plan.free': 'Бесплатно', 'plan.basic': 'Базовый', 'plan.pro': 'Про', 'plan.popular': 'Популярный',
+    'plan.free.period': 'навсегда', 'plan.month': 'в месяц', 'plan.start': 'Начать', 'plan.choose': 'Выбрать Базовый', 'plan.choose.pro': 'Выбрать Про',
+    'pf1.1': '1 ресторан', 'pf1.2': 'До 50 заказов/месяц', 'pf1.3': 'Базовое управление меню', 'pf1.4': 'Telegram-бот', 'pf1.5': 'Аналитика', 'pf1.6': 'White label брендинг', 'pf1.7': 'Приоритетная поддержка',
+    'pf2.1': 'До 5 ресторанов', 'pf2.2': 'Неограниченные заказы', 'pf2.3': 'Полное управление меню', 'pf2.4': 'Telegram-бот для каждого', 'pf2.5': 'Аналитика', 'pf2.6': 'Управление QR-кодами', 'pf2.7': 'White label брендинг',
+    'pf3.1': 'Неограниченные рестораны', 'pf3.2': 'Неограниченные заказы', 'pf3.3': 'Полный white label', 'pf3.4': 'Кастомные домены', 'pf3.5': 'Расширенная аналитика', 'pf3.6': 'Приоритетная поддержка', 'pf3.7': 'PDF-счета',
+    'faq.h2': 'Частые вопросы.',
+    'faq.q1': 'Что конкретно означает "white label"?', 'faq.a1': 'Вы получаете платформу под полностью кастомным брендом. Telegram-бот имеет своё имя, веб-приложение показывает логотип и цвета ресторана, URL — кастомный домен. Конечные клиенты не видят "Taomly".',
+    'faq.q2': 'Сколько времени занимает подключение нового ресторана?', 'faq.a2': 'После деплоя платформы добавление ресторана занимает 2–3 минуты в агентской админке: имя, slug, токен бота и цвета. Система автоматически настраивает вебхуки, PWA-манифест и QR-коды.',
+    'faq.q3': 'Нужен ли отдельный Telegram-бот для каждого ресторана?', 'faq.a3': 'Да — каждый ресторан получает своего бота. Создание через @BotFather занимает 30 секунд, платформа автоматически настраивает вебхуки.',
+    'faq.q4': 'Можно ли купить исходный код?', 'faq.a4': 'Да. Платформа доступна как asset sale — полный исходный код, документация, гайды по деплою и тест-сьют. Хостите на любом провайдере с поддержкой Python/Docker.',
+    'faq.q5': 'Какая база данных и инфраструктура?', 'faq.a5': 'PostgreSQL (проверено на Neon). Бэкенд: FastAPI + SQLAlchemy. Docker на Render, Railway, DigitalOcean, AWS, GCP. Включает docker-compose.yml, Dockerfile, Alembic и GitHub Actions.',
+    'contact.h2': 'Готовы к запуску?', 'contact.sub': 'Хотите приобрести платформу или запустить для клиентов — напишите, ответим в течение 24 часов.',
+    'form.name': 'Имя', 'form.company': 'Компания', 'form.email': 'Email', 'form.interest': 'Меня интересует',
+    'form.opt1': 'Приобрести платформу (asset sale)', 'form.opt2': 'White label для агентства', 'form.opt3': 'SaaS подписка для ресторана', 'form.opt4': 'Кастомная разработка / интеграция',
+    'form.message': 'Сообщение', 'form.submit': 'Отправить →', 'form.success': '✓ Сообщение получено. Ответим в течение 24 часов.',
+    'footer.copy': '© 2026 Taomly. Построено на FastAPI и Telegram Mini App.', 'footer.contact': 'Контакт', 'footer.pricing': 'Цены',
+  }
+};
+
+let currentLang = 'en';
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  document.getElementById('langBtn').textContent = lang === 'en' ? 'RU' : 'EN';
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (LANG[lang][key] !== undefined) el.innerHTML = LANG[lang][key];
+  });
+}
+function toggleLang() { setLang(currentLang === 'en' ? 'ru' : 'en'); }
+
+const demos = [
+  { name: '🌿 Chinar Restaurant', color: '#7C5C3E', sub_en: 'Tashkent · Open now', sub_ru: 'Ташкент · Открыто', url: 'menu.chinar-restaurant.uz' },
+  { name: '🍕 Apex Pizza', color: '#D63031', sub_en: 'Bukhara · Open now', sub_ru: 'Бухара · Открыто', url: 'order.apexpizza.uz' },
+  { name: '☕ Nomad Coffee', color: '#2D3436', sub_en: 'Samarkand · Open now', sub_ru: 'Самарканд · Открыто', url: 'menu.nomadcoffee.uz' },
+];
+let demoIdx = 0;
+function switchDemo() {
+  demoIdx = (demoIdx + 1) % demos.length;
+  const d = demos[demoIdx];
+  document.getElementById('wl-name').style.color = d.color;
+  document.getElementById('wl-name').textContent = d.name;
+  document.querySelector('.wl-url').textContent = d.url;
+  document.querySelector('.wl-restaurant-sub').textContent = currentLang === 'en' ? d.sub_en : d.sub_ru;
+}
+
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+function submitForm() {
+  const email = document.getElementById('femail').value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email.'); return; }
+  document.querySelector('.contact-form').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+}
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+function animateCounters() {
+  document.querySelectorAll('.count').forEach(el => {
+    const target = parseInt(el.getAttribute('data-target'));
+    const step = target / (1800 / 16);
+    let current = 0;
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) { el.textContent = target.toLocaleString(); clearInterval(timer); return; }
+      el.textContent = Math.floor(current).toLocaleString();
+    }, 16);
+  });
+}
+const metricObs = new IntersectionObserver((entries) => {
+  if (entries[0].isIntersecting) { animateCounters(); metricObs.disconnect(); }
+}, { threshold: 0.3 });
+const metricsEl = document.querySelector('.metrics');
+if (metricsEl) metricObs.observe(metricsEl);
+
+document.addEventListener('click', (e) => {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+  if (menu.classList.contains('open') && !menu.contains(e.target) && !ham.contains(e.target)) menu.classList.remove('open');
+});
+</script>
+</body>
+</html>
